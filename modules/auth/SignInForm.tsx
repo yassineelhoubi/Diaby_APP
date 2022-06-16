@@ -3,7 +3,7 @@ import React from 'react'
 
 const SignInForm = () => {
     return (
-        <View style={{top:100, right:0}}>
+        <View >
             <Text>SignInForm</Text>
         </View>
     )
