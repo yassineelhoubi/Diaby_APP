@@ -21,13 +21,14 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Auth } from "../screens/Auth";
 import AddPost from "../screens/AddPost";
+import { HealthScreen, SearchScreen, WelcomeScreen, SignUpScreen , SignInScreen} from "../screens";
+// import { SignInScreen } from "../screens/auth/SignInScreen";
+// import { SignUpScreen } from "../screens/";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
-  const cart = useSelector((state) => state.cart);
-
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -53,13 +54,13 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Food"
-        component={Food}
+        name="Search"
+        component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name="Food"
-              source={require("../../assets/png/food.png")}
+              name="Search"
+              source={require("../../assets/png/search_active.png")}
               isFocuse={focused}
             />
           ),
@@ -71,7 +72,7 @@ function BottomTabNavigator() {
         component={Home}
         listeners={["tabPress"]}
         options={{
-          title: "Demi",
+          title: "Diaby",
           headerTitleAlign: "center",
           headerStyle: { backgroundColor: "#fff" },
           headerTintColor: "#000",
@@ -86,15 +87,14 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Commande"
-        component={CartShop}
+        name="Health"
+        component={HealthScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name={cart.total == 0 ? "Cart" : `Cart ${cart.total} dh`}
-              source={require("../../assets/png/cart.png")}
+              name="Health"
+              source={require("../../assets/png/health-heart.png")}
               isFocuse={focused}
-              lengthOfProducts
             />
           ),
         }}
@@ -105,7 +105,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name="Réglages"
+              name="Settings"
               source={require("../../assets/png/settings.png")}
               isFocuse={focused}
             />
@@ -117,19 +117,24 @@ function BottomTabNavigator() {
 }
 
 
-
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="WelcomeNavigator">
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: false
+        options={{
+          headerShown: false
         }}
       />
       <Stack.Screen
         name="AddPost"
         component={AddPost}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WelcomeNavigator"
+        component={WelcomeNavigator}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -147,6 +152,28 @@ function FoodNavigator() {
       <Stack.Screen
         name="FoodInfo"
         component={FoodInfo}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function WelcomeNavigator() {
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignInScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
