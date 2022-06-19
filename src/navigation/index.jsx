@@ -21,14 +21,14 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Auth } from "../screens/Auth";
 import AddPost from "../screens/AddPost";
-import { HealthScreen, SearchScreen } from "../screens";
+import { HealthScreen, SearchScreen, WelcomeScreen, SignUpScreen , SignInScreen} from "../screens";
+// import { SignInScreen } from "../screens/auth/SignInScreen";
+// import { SignUpScreen } from "../screens/";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
-  const cart = useSelector((state) => state.cart);
-
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -105,7 +105,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name="Réglages"
+              name="Settings"
               source={require("../../assets/png/settings.png")}
               isFocuse={focused}
             />
@@ -117,10 +117,9 @@ function BottomTabNavigator() {
 }
 
 
-
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="WelcomeNavigator">
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
@@ -131,6 +130,11 @@ function RootNavigator() {
       <Stack.Screen
         name="AddPost"
         component={AddPost}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WelcomeNavigator"
+        component={WelcomeNavigator}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -148,6 +152,28 @@ function FoodNavigator() {
       <Stack.Screen
         name="FoodInfo"
         component={FoodInfo}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function WelcomeNavigator() {
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignInScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
