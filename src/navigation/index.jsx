@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Auth } from "../screens/Auth";
 import AddPost from "../screens/AddPost";
+import { HealthScreen, SearchScreen } from "../screens";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -53,13 +54,13 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Food"
-        component={Food}
+        name="Search"
+        component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name="Food"
-              source={require("../../assets/png/food.png")}
+              name="Search"
+              source={require("../../assets/png/search_active.png")}
               isFocuse={focused}
             />
           ),
@@ -71,7 +72,7 @@ function BottomTabNavigator() {
         component={Home}
         listeners={["tabPress"]}
         options={{
-          title: "Demi",
+          title: "Diaby",
           headerTitleAlign: "center",
           headerStyle: { backgroundColor: "#fff" },
           headerTintColor: "#000",
@@ -86,15 +87,14 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Commande"
-        component={CartShop}
+        name="Health"
+        component={HealthScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
-              name={cart.total == 0 ? "Cart" : `Cart ${cart.total} dh`}
-              source={require("../../assets/png/cart.png")}
+              name="Health"
+              source={require("../../assets/png/health-heart.png")}
               isFocuse={focused}
-              lengthOfProducts
             />
           ),
         }}
@@ -124,7 +124,8 @@ function RootNavigator() {
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: false
+        options={{
+          headerShown: false
         }}
       />
       <Stack.Screen
