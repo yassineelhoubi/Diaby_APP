@@ -3,7 +3,7 @@ import tw from 'twrnc';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../constants/theme';
 
-export const MapButton = ({ isFocuse }) => {
+export const HomeBtn = ({ isFocuse }) => {
   return (
     <View
       style={[

@@ -1,29 +1,20 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
 import { Button, Platform, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, FONTS } from "../constants/theme";
-import Profile from "../screens/Profile";
-import Options from "../screens/Options";
-import CartShop from "../screens/CartShop";
 
-
-import Pharmacies from "../screens/Pharmacies";
-import Food from "../screens/Food";
-import { FoodInfo } from "../screens/FoodInfo";
-
-import { TabBarIcon, MapButton } from "../components/index";
+import { TabBarIcon, HomeBtn } from "../components/index";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { MenuInfo } from "../screens/MenuInfo";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Auth } from "../screens/Auth";
+
+import Home from "../screens/Home";
+import Options from "../screens/Options";
+import Profile from "../screens/Profile";
 import AddPost from "../screens/AddPost";
 import { HealthScreen, SearchScreen, WelcomeScreen, SignUpScreen , SignInScreen} from "../screens";
-// import { SignInScreen } from "../screens/auth/SignInScreen";
-// import { SignUpScreen } from "../screens/";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -83,7 +74,7 @@ function BottomTabNavigator() {
             color: COLORS.primary,
             ...FONTS.h2,
           },
-          tabBarIcon: ({ focused }) => <MapButton isFocuse={focused} />
+          tabBarIcon: ({ focused }) => <HomeBtn isFocuse={focused} />
         }}
       />
       <BottomTab.Screen
@@ -119,7 +110,7 @@ function BottomTabNavigator() {
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="WelcomeNavigator">
+    <Stack.Navigator initialRouteName="Root">
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
@@ -141,22 +132,6 @@ function RootNavigator() {
   );
 }
 
-function FoodNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Food"
-        component={Food}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="FoodInfo"
-        component={FoodInfo}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function WelcomeNavigator() {
   return (
