@@ -15,7 +15,6 @@ import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
 import { Ionicons } from '@expo/vector-icons';
 import { Button, Icon } from "react-native-elements";
-import { MenuCardFood } from "../components/MenuCardFood";
 import { useSelector } from "react-redux";
 import { FloatingAction } from "react-native-floating-action";
 
