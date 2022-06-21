@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, Platform, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, FONTS } from "../constants/theme";
 
-import { TabBarIcon, MapButton } from "../components/index";
+import { TabBarIcon, HomeBtn } from "../components/index";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -74,7 +74,7 @@ function BottomTabNavigator() {
             color: COLORS.primary,
             ...FONTS.h2,
           },
-          tabBarIcon: ({ focused }) => <MapButton isFocuse={focused} />
+          tabBarIcon: ({ focused }) => <HomeBtn isFocuse={focused} />
         }}
       />
       <BottomTab.Screen

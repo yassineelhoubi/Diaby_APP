@@ -109,10 +109,10 @@ console.log("refreshing");
           {[1, 1, 1, 1].map((item, index) => (
 
 
-            <View style={tw`p-2 w-full `}>
+            <View style={tw`p-2 w-full `} key={index}>
               
               <View style={tw`flex-row justify-between h-15 rounded-5 bg-sky-100`}>
-                <Text style={tw`text-base font-bold`}>test</Text>
+                <Text style={tw`text-base font-bold`}>test {item}</Text>
                 
               </View>
             </View>
