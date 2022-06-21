@@ -4,7 +4,7 @@ import { Button, Menu, Divider, Provider, List } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { checkDarkMode } from "../app/features/user/userSlice";
 
-const Options = () => {
+const OptionsScreen = () => {
   const dispatch = useDispatch();
 
   return (
@@ -16,4 +16,4 @@ const Options = () => {
     </View>
   );
 };
-export default Options;
+export {OptionsScreen};

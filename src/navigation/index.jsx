@@ -10,11 +10,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import Home from "../screens/Home";
-import Options from "../screens/Options";
-import Profile from "../screens/Profile";
-import AddPost from "../screens/AddPost";
-import { HealthScreen, SearchScreen, WelcomeScreen, SignUpScreen , SignInScreen} from "../screens";
+// import Home from "../screens/Home";
+// import Options from "../screens/Options";
+// import Profile from "../screens/Profile";
+// import AddPost from "../screens/AddPost";
+import {
+  HealthScreen,
+  SearchScreen,
+  WelcomeScreen,
+  SignUpScreen,
+  SignInScreen,
+  ProfileScreen,
+  AddPost,
+  OptionsScreen,
+  HomeScreen
+} from "../screens";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -32,7 +42,7 @@ function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
@@ -60,7 +70,7 @@ function BottomTabNavigator() {
 
       <BottomTab.Screen
         name="Home"
-        component={Home}
+        component={HomeScreen}
         listeners={["tabPress"]}
         options={{
           title: "Diaby",
@@ -92,7 +102,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Settings"
-        component={Options}
+        component={OptionsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon

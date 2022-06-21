@@ -179,4 +179,4 @@ const AddPost = ({ navigation }) => {
     )
 }
 
-export default AddPost
+export { AddPost }

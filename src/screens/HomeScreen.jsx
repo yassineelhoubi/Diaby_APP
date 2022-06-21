@@ -23,7 +23,7 @@ const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
-export default function Home() {
+export  function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
 
