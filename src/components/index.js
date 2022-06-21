@@ -1,2 +1,2 @@
-export { TabBarIcon } from './TabBarIcon';
-export { HomeBtn } from './HomeBtn';
+export { TabBarIcon } from './buttons/TabBarIcon';
+export { HomeBtn } from './buttons/HomeBtn';
