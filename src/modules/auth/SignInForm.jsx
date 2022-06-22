@@ -4,14 +4,13 @@ import { Formik } from 'formik';
 import { Button } from 'react-native-paper';
 import * as Yup from 'yup';
 import { SignInFields } from './components';
+import { signInInitValues, signInSchemaValidation } from './schema';
 
 const SignInForm = () => {
     return (
         <Formik
-            initialValues={{ firstName: '' }}
-            validationSchema={Yup.object({
-                firstName: Yup.string().min(3, "First name must be at least 3 characters").required("First name is required"),
-            })}
+            initialValues={signInInitValues}
+            validationSchema={signInSchemaValidation}
 
             onSubmit={values => {
                 Alert.alert(JSON.stringify(values, null, 2));
