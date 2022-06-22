@@ -9,9 +9,7 @@ const WelcomeScreen = ({ navigation }) => {
 
         <SafeAreaView style={styles.container}>
             <View style={styles.headerContainer}>
-
                 <Image source={require('./../../assets/diaby-logos.png')} style={styles.logo} />
-
                 <Text style={styles.title} >Diaby Welcome You</Text>
                 <Text style={styles.desc} >Diaby is a platform that helps you to Track your diabetes status </Text>
             </View>
