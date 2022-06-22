@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from 'twrnc'
 import { COLORS } from '../constants/theme'
+import { PrimaryBtn } from '../components'
 const WelcomeScreen = ({ navigation }) => {
     return (
 
@@ -16,9 +17,7 @@ const WelcomeScreen = ({ navigation }) => {
             </View>
             <View>
                 <Image source={require('./../../assets/png/Doctor.png')} style={styles.bodyImage} />
-                <TouchableOpacity onPress={() => console.log('a')} style={styles.appButtonContainer}>
-                    <Text style={styles.appButtonText}>GET STARTED</Text>
-                </TouchableOpacity>
+                <PrimaryBtn title="Get Started" OnPress={() => navigation.push("SignIn")} />
                 <View style={{ flexDirection: 'row', marginTop: 15 }}>
                     <Text style={{ color: COLORS.secondaryText }}>Already have an account ? </Text>
                     <TouchableOpacity onPress={() => console.log('a')} style={{ color: "#000" }}><Text>Sign In</Text>
@@ -65,18 +64,5 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         alignSelf: 'center',
     },
-    appButtonContainer: {
-        backgroundColor: COLORS.primary,
-        padding: 10,
-        borderRadius: 15,
-        marginTop: 20,
-        width: 200,
-        alignSelf: 'center'
-    },
-    appButtonText: {
-        color: "#fff",
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    }
+
 })
