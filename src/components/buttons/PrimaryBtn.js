@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { COLORS } from '../../constants/theme'
 
-const PrimaryBtn = ({title, OnPress}) => {
+const PrimaryBtn = ({title, onPress, style}) => {
     return (
-        <TouchableOpacity onPress={OnPress} style={styles.appButtonContainer}>
+        <TouchableOpacity onPress={onPress} style={{...styles.appButtonContainer,...style}}>
             <Text style={styles.appButtonText}>{title}</Text>
         </TouchableOpacity>
     )

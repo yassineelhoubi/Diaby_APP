@@ -15,7 +15,7 @@ const WelcomeScreen = ({ navigation }) => {
             </View>
             <View>
                 <Image source={require('./../../assets/png/Doctor.png')} style={styles.bodyImage} />
-                <PrimaryBtn title="Get Started" OnPress={() => navigation.push("SignIn")} />
+                <PrimaryBtn title="Get Started" onPress={() => navigation.push("SignIn")} />
                 <View style={{ flexDirection: 'row', marginTop: 15 }}>
                     <Text style={{ color: COLORS.secondaryText }}>Already have an account ? </Text>
                     <TouchableOpacity onPress={() => console.log('a')} style={{ color: "#000" }}><Text>Sign In</Text>

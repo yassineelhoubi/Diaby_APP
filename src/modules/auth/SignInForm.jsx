@@ -5,7 +5,8 @@ import { Button } from 'react-native-paper';
 import * as Yup from 'yup';
 import { SignInFields } from './components';
 import { signInInitValues, signInSchemaValidation } from './schema';
-
+import { PrimaryBtn } from '../../components';
+import tw from 'twrnc'
 const SignInForm = () => {
     return (
         <Formik
@@ -20,7 +21,7 @@ const SignInForm = () => {
             {({ handleChange, handleSubmit, values, errors, touched }) => (
                 <View>
                     <SignInFields handleChange={handleChange} values={values} errors={errors} touched={touched} />
-                    <Button onPress={handleSubmit} >Submit</Button>
+                    <PrimaryBtn title="LOG IN" onPress={handleSubmit} style={styles.LoginBtn} />
                 </View>
             )}
         </Formik>
@@ -29,4 +30,9 @@ const SignInForm = () => {
 
 export { SignInForm }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    LoginBtn:{
+        width:'80%',
+        paddingVertical:12
+    }
+})
