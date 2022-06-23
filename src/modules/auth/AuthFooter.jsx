@@ -4,7 +4,7 @@ import { COLORS } from '../../constants/theme'
 
 const AuthFooter = ({ text, actionName, onPress }) => {
     return (
-        <View style={{ flexDirection: 'row', marginTop: 15 }}>
+        <View style={{ flexDirection: 'row', marginTop: 15, justifyContent:"center" }}>
             <Text style={{ color: COLORS.secondaryText }}>{text}</Text>
             <TouchableOpacity onPress={onPress} style={{ color: "#000" }}><Text> {actionName}</Text>
             </TouchableOpacity>
