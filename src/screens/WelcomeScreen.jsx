@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import tw from 'twrnc'
 import { COLORS } from '../constants/theme'
 import { PrimaryBtn } from '../components'
+import { AuthFooter } from '../modules/auth'
+
 const WelcomeScreen = ({ navigation }) => {
     return (
 
@@ -16,11 +17,7 @@ const WelcomeScreen = ({ navigation }) => {
             <View>
                 <Image source={require('./../../assets/png/Doctor.png')} style={styles.bodyImage} />
                 <PrimaryBtn title="Get Started" onPress={() => navigation.push("SignIn")} />
-                <View style={{ flexDirection: 'row', marginTop: 15 }}>
-                    <Text style={{ color: COLORS.secondaryText }}>Already have an account ? </Text>
-                    <TouchableOpacity onPress={() => console.log('a')} style={{ color: "#000" }}><Text>Sign In</Text>
-                    </TouchableOpacity>
-                </View>
+                <AuthFooter text={'Don\'t have an account?'} actionName={'Sign In'} onPress={() => navigation.push('SignUp')} />
             </View>
         </SafeAreaView>
     )
