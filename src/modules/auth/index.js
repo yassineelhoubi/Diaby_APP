@@ -1,3 +1,3 @@
 export { SignInForm } from './SignInForm';
-export { SignInHeader } from './SignInHeader';
+export { AuthHeader } from './AuthHeader';
 export { AuthFooter } from './AuthFooter';

@@ -2,17 +2,17 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { COLORS } from '../../constants/theme'
 
-const SignInHeader = () => {
+const AuthHeader = ({ title, subTitle }) => {
     return (
         <View style={styles.headerContainer}>
             <Image source={require('./../../../assets/diaby-logos.png')} style={styles.logo} />
-            <Text style={styles.title} >Login</Text>
-            <Text style={styles.desc} >Enter your login details to access your account</Text>
+            <Text style={styles.title} >{title}</Text>
+            <Text style={styles.subTitle} >{subTitle}</Text>
         </View>
     )
 }
 
-export { SignInHeader }
+export { AuthHeader }
 
 const styles = StyleSheet.create({
     headerContainer: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         letterSpacing: 2
     },
-    desc: {
+    subTitle: {
         color: COLORS.secondaryText,
         fontSize: 15,
         letterSpacing: 1,

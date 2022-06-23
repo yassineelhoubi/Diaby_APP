@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
-import { AuthFooter, SignInForm, SignInHeader } from '../../modules/auth';
+import { AuthFooter, SignInForm, AuthHeader } from '../../modules/auth';
 import { BackBtn } from '../../components';
 
 
@@ -10,7 +10,7 @@ const SignInScreen = ({ navigation }) => {
             <BackBtn onPress={() => navigation.goBack()} />
 
             <SafeAreaView style={styles.container}>
-                <SignInHeader />
+                <AuthHeader title="Login" subTitle="Enter your login details to access your account" />
                 <SignInForm />
                 <AuthFooter text={'Don\'t have an account?'}
                     actionName={'Sign In'}
