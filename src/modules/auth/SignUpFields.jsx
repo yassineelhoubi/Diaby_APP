@@ -2,9 +2,49 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-paper';
 import { COLORS } from '../../constants/theme';
+import { DiabeteTypeRadioBtn } from './DiabeteTypeRadioBtn';
+import { RadioButton } from 'react-native-paper';
+
 const SignUpFields = ({ handleChange, values, errors, touched }) => {
+
     return (
         <>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    onChangeText={handleChange('fName')} ame
+                    value={values.fName}
+                    label="First Name"
+                    placeholder="Enter your first name"
+                    mode="outlined"
+                    error={errors.fName && touched.fName}
+                    underlineColor={COLORS.primary}
+                    selectionColor={COLORS.primary}
+                    activeUnderlineColor={COLORS.primary}
+                    outlineColor={COLORS.secondary}
+                    activeOutlineColor={COLORS.primary}
+                />
+                {errors.fName && touched.fName ? (
+                    <Text style={{ color: "red" }}>{errors.fName}</Text>
+                ) : null}
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    onChangeText={handleChange('lName')}
+                    value={values.lName}
+                    label="Last Name"
+                    placeholder="Enter your last name"
+                    mode="outlined"
+                    error={errors.lName && touched.lName}
+                    underlineColor={COLORS.primary}
+                    selectionColor={COLORS.primary}
+                    activeUnderlineColor={COLORS.primary}
+                    outlineColor={COLORS.secondary}
+                    activeOutlineColor={COLORS.primary}
+                />
+                {errors.lName && touched.lName ? (
+                    <Text style={{ color: "red" }}>{errors.lName}</Text>
+                ) : null}
+            </View>
             <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={handleChange('email')}
@@ -45,41 +85,21 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                 ) : null}
             </View>
             <View style={styles.inputContainer}>
-                <TextInput
-                    onChangeText={handleChange('fName')} ame
-                    value={values.fName}
-                    label="First Name"
-                    placeholder="Enter your first name"
-                    mode="outlined"
-                    error={errors.fName && touched.fName}
-                    underlineColor={COLORS.primary}
-                    selectionColor={COLORS.primary}
-                    activeUnderlineColor={COLORS.primary}
-                    outlineColor={COLORS.secondary}
-                    activeOutlineColor={COLORS.primary}
-                />
-                {errors.fName && touched.fName ? (
-                    <Text style={{ color: "red" }}>{errors.fName}</Text>
+                <RadioButton.Group
+                    onValueChange={handleChange('diabetesType')}
+                    value={values.diabetesType}
+                >
+                    <Text style={{ color: COLORS.primaryText }}>Diabete Type : </Text>
+                    <RadioButton.Item label="Type 1" value="first" />
+                    <RadioButton.Item label="Type 2" value="second" />
+                    <RadioButton.Item label="Type 3" value="third" />
+                </RadioButton.Group>
+                {errors.diabetesType && touched.diabetesType ? (
+                    <Text style={{ color: "red" }}>{errors.diabetesType}</Text>
                 ) : null}
             </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    onChangeText={handleChange('lName')}
-                    value={values.lName}
-                    label="Last Name"
-                    placeholder="Enter your last name"
-                    mode="outlined"
-                    error={errors.lName && touched.lName}
-                    underlineColor={COLORS.primary}
-                    selectionColor={COLORS.primary}
-                    activeUnderlineColor={COLORS.primary}
-                    outlineColor={COLORS.secondary}
-                    activeOutlineColor={COLORS.primary}
-                />
-                {errors.lName && touched.lName ? (
-                    <Text style={{ color: "red" }}>{errors.lName}</Text>
-                ) : null}
-            </View>
+
+
         </>
     )
 }
