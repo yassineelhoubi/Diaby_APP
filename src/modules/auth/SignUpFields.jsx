@@ -22,7 +22,7 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                     activeUnderlineColor={COLORS.primary}
                     outlineColor={COLORS.secondary}
                     activeOutlineColor={COLORS.primary}
-                />
+                    />
                 {errors.fName && touched.fName ? (
                     <Text style={{ color: "red" }}>{errors.fName}</Text>
                 ) : null}
@@ -43,7 +43,7 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                 />
                 {errors.lName && touched.lName ? (
                     <Text style={{ color: "red" }}>{errors.lName}</Text>
-                ) : null}
+                    ) : null}
             </View>
             <View style={styles.inputContainer}>
                 <TextInput
@@ -60,10 +60,10 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                     activeUnderlineColor={COLORS.primary}
                     outlineColor={COLORS.secondary}
                     activeOutlineColor={COLORS.primary}
-                />
+                    />
                 {errors.email && touched.email ? (
                     <Text style={{ color: "red" }}>{errors.email}</Text>
-                ) : null}
+                    ) : null}
             </View>
             <View style={styles.inputContainer}>
                 <TextInput
@@ -79,16 +79,16 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                     activeUnderlineColor={COLORS.primary}
                     outlineColor={COLORS.secondary}
                     activeOutlineColor={COLORS.primary}
-                />
+                    />
                 {errors.password && touched.password ? (
                     <Text style={{ color: "red" }}>{errors.password}</Text>
-                ) : null}
+                    ) : null}
             </View>
             <View style={styles.inputContainer}>
                 <RadioButton.Group
                     onValueChange={handleChange('diabetesType')}
                     value={values.diabetesType}
-                >
+                    >
                     <Text style={{ color: COLORS.primaryText }}>Diabete Type : </Text>
                     <RadioButton.Item label="Type 1" value="first" />
                     <RadioButton.Item label="Type 2" value="second" />

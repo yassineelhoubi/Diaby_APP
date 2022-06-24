@@ -2,14 +2,17 @@ import { StyleSheet, Text, View, Button, SafeAreaView, StatusBar } from 'react-n
 import React from 'react'
 import { BackBtn } from '../../components'
 import { AuthHeader, SignUpForm } from '../../modules/auth'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const SignUpScreen = ({ navigation }) => {
     return (
         <>
             <BackBtn onPress={() => navigation.goBack()} />
             <SafeAreaView style={styles.container}>
-                <AuthHeader title="Register" subTitle="Enter your credentials to register" />
-                <SignUpForm />
+                <KeyboardAwareScrollView  >
+                    <AuthHeader title="Register" subTitle="Enter your credentials to register" />
+                    <SignUpForm />
+                </KeyboardAwareScrollView >
             </SafeAreaView>
         </>
     )

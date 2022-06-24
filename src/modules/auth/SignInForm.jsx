@@ -3,7 +3,7 @@ import React from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-native-paper';
 import * as Yup from 'yup';
-import { SignInFields } from './components';
+import { SignInFields } from './SignInFields';
 import { signInInitValues, signInSchemaValidation } from './schema';
 import { PrimaryBtn } from '../../components';
 import tw from 'twrnc'
@@ -31,8 +31,8 @@ const SignInForm = () => {
 export { SignInForm }
 
 const styles = StyleSheet.create({
-    LoginBtn:{
-        width:'80%',
-        paddingVertical:12
+    LoginBtn: {
+        width: '80%',
+        paddingVertical: 12
     }
 })

@@ -1,8 +1,8 @@
-import { StyleSheet, SafeAreaView, StatusBar } from 'react-native'
+import { StyleSheet, SafeAreaView, StatusBar, View } from 'react-native'
 import React from 'react'
 import { AuthFooter, SignInForm, AuthHeader } from '../../modules/auth';
 import { BackBtn } from '../../components';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const SignInScreen = ({ navigation }) => {
     return (
@@ -10,11 +10,19 @@ const SignInScreen = ({ navigation }) => {
             <BackBtn onPress={() => navigation.goBack()} />
 
             <SafeAreaView style={styles.container}>
-                <AuthHeader title="Login" subTitle="Enter your login details to access your account" />
-                <SignInForm />
-                <AuthFooter text={'Don\'t have an account?'}
-                    actionName={'Sign In'}
-                    onPress={() => navigation.push('SignUp')} />
+
+                <KeyboardAwareScrollView
+                    contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+                >
+                    {/* <View style={{ height:"100%", backgroundColor:"green" }}> */}
+
+                    <AuthHeader title="Login" subTitle="Enter your login details to access your account" />
+                    <SignInForm />
+                    <AuthFooter text={'Don\'t have an account?'}
+                        actionName={'Sign In'}
+                        onPress={() => navigation.push('SignUp')} />
+                    {/* </View> */}
+                </KeyboardAwareScrollView >
             </SafeAreaView>
         </>
     )
@@ -27,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         marginTop: StatusBar.currentHeight,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         padding: 25
     },
 })
