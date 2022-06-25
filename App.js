@@ -16,16 +16,9 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <SafeAreaProvider style={styles.container}>
+      <SafeAreaProvider >
         <Navigation />
       </SafeAreaProvider>
     </Provider>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-      marginTop: StatusBar.currentHeight,
-      backgroundColor: 'black',
-      flex: 1
-  }
-});

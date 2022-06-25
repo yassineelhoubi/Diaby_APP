@@ -1,29 +1,30 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
 import { Button, Platform, Text, TouchableOpacity, View } from "react-native";
 import { COLORS, FONTS } from "../constants/theme";
-import Profile from "../screens/Profile";
-import Options from "../screens/Options";
-import CartShop from "../screens/CartShop";
 
-
-import Pharmacies from "../screens/Pharmacies";
-import Food from "../screens/Food";
-import { FoodInfo } from "../screens/FoodInfo";
-
-import { TabBarIcon, MapButton } from "../components/index";
+import { TabBarIcon, HomeBtn } from "../components/index";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { MenuInfo } from "../screens/MenuInfo";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Auth } from "../screens/Auth";
-import AddPost from "../screens/AddPost";
-import { HealthScreen, SearchScreen, WelcomeScreen, SignUpScreen , SignInScreen} from "../screens";
-// import { SignInScreen } from "../screens/auth/SignInScreen";
-// import { SignUpScreen } from "../screens/";
+
+// import Home from "../screens/Home";
+// import Options from "../screens/Options";
+// import Profile from "../screens/Profile";
+// import AddPost from "../screens/AddPost";
+import {
+  HealthScreen,
+  SearchScreen,
+  WelcomeScreen,
+  SignUpScreen,
+  SignInScreen,
+  ProfileScreen,
+  AddPost,
+  OptionsScreen,
+  HomeScreen
+} from "../screens";
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -41,7 +42,7 @@ function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
@@ -69,7 +70,7 @@ function BottomTabNavigator() {
 
       <BottomTab.Screen
         name="Home"
-        component={Home}
+        component={HomeScreen}
         listeners={["tabPress"]}
         options={{
           title: "Diaby",
@@ -83,7 +84,7 @@ function BottomTabNavigator() {
             color: COLORS.primary,
             ...FONTS.h2,
           },
-          tabBarIcon: ({ focused }) => <MapButton isFocuse={focused} />
+          tabBarIcon: ({ focused }) => <HomeBtn isFocuse={focused} />
         }}
       />
       <BottomTab.Screen
@@ -101,7 +102,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Settings"
-        component={Options}
+        component={OptionsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
@@ -141,22 +142,6 @@ function RootNavigator() {
   );
 }
 
-function FoodNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Food"
-        component={Food}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="FoodInfo"
-        component={FoodInfo}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function WelcomeNavigator() {
   return (

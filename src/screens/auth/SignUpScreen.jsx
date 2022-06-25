@@ -1,18 +1,30 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
+import { BackBtn } from '../../components'
+import { AuthHeader, SignUpForm } from '../../modules/auth'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const SignUpScreen = ({ navigation }) => {
     return (
-        <View>
-            <Text>SignUpScreen</Text>
-            <Button title="signIn" onPress={() => {
-                navigation.navigate('SignIn')
-            }
-            } />
-        </View>
+        <>
+            <BackBtn onPress={() => navigation.goBack()} />
+            <SafeAreaView style={styles.container}>
+                <KeyboardAwareScrollView  >
+                    <AuthHeader title="Register" subTitle="Enter your credentials to register" />
+                    <SignUpForm />
+                </KeyboardAwareScrollView >
+            </SafeAreaView>
+        </>
     )
 }
 
 export { SignUpScreen }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        marginTop: StatusBar.currentHeight,
+        padding: 25
+    },
+})
