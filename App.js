@@ -1,7 +1,7 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Navigation from './src/navigation';
 import { Provider } from 'react-redux';
-import { store } from './src/app/store';
+import store from './src/app/store';
 import { useCachedResources } from './src/hooks/useCachedResources';
 import { StyleSheet, StatusBar } from 'react-native'
 import { LogBox } from 'react-native';
