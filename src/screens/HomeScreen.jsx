@@ -27,7 +27,7 @@ const wait = (timeout) => {
 
 export function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
-  
+
   const [modalVisible, setModalVisible] = useState(false);
   const [userDiary, setUserDiary] = useState();
   const handleModalVisibility = {
@@ -158,7 +158,7 @@ export function HomeScreen() {
           setModalVisible(true);
         }}
       />
-      <DiaryInputModal handleModalVisibility={handleModalVisibility} handleUserDiary={handleUserDiary} />
+      {modalVisible && <DiaryInputModal handleModalVisibility={handleModalVisibility} handleUserDiary={handleUserDiary} />}
     </View>
 
   );
