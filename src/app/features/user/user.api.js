@@ -10,9 +10,17 @@ const userApi = apiWithTags.injectEndpoints({
                 method: 'POST',
                 body,
             })
-        })
+        }),
+        register: builder.mutation({
+            query: (body) => ({
+                url: '/user',
+                method: 'POST',
+                body,
+            })
+        }),
     })
 })
 export const {
     useLoginMutation,
+    useRegisterMutation,
 } = userApi

@@ -90,9 +90,9 @@ const SignUpFields = ({ handleChange, values, errors, touched }) => {
                     value={values.diabetesType}
                     >
                     <Text style={{ color: COLORS.primaryText }}>Diabete Type : </Text>
-                    <RadioButton.Item label="Type 1" value="first" />
-                    <RadioButton.Item label="Type 2" value="second" />
-                    <RadioButton.Item label="Type 3" value="third" />
+                    <RadioButton.Item label="Type 1" value="A" />
+                    <RadioButton.Item label="Type 2" value="B" />
+                    <RadioButton.Item label="Type 3" value="C" />
                 </RadioButton.Group>
                 {errors.diabetesType && touched.diabetesType ? (
                     <Text style={{ color: "red" }}>{errors.diabetesType}</Text>
