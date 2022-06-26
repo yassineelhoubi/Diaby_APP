@@ -22,7 +22,7 @@ const SignInForm = ({ navigation }) => {
                 onSubmit={values => {
                     login(values).then(res => {
                         if (!res.data.error) {
-                            return navigation.push('Root')  
+                            return navigation.push('Root')
                         }
                         setShowSnackbar(true)
                         console.log("z")
@@ -30,13 +30,11 @@ const SignInForm = ({ navigation }) => {
                     }).catch(err => {
                         console.log(err)
                     });
-                    // console.log(values)
-
                 }
                 }>
-                {({ handleChange, handleSubmit, values, errors, touched }) => (
+                {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
-                        <SignInFields handleChange={handleChange} values={values} errors={errors} touched={touched} />
+                        <SignInFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
                         <PrimaryBtn title="LOG IN" onPress={handleSubmit} style={styles.LoginBtn} />
                     </View>
                 )}

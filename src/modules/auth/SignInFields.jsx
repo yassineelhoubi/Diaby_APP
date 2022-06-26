@@ -2,12 +2,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-paper';
 import { COLORS } from '../../constants/theme';
-const SignInFields = ({ handleChange, values, errors, touched }) => {
+const SignInFields = ({ handleChange, handleBlur, values, errors, touched }) => {
     return (
         <>
             <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
                     value={values.email}
                     label="Email"
                     placeholder="Enter your email"
@@ -26,6 +27,7 @@ const SignInFields = ({ handleChange, values, errors, touched }) => {
             <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
                     value={values.password}
                     label="Password"
                     placeholder="Enter your password"

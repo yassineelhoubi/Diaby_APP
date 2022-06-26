@@ -21,7 +21,6 @@ const SignUpForm = () => {
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)
-                        console.log("z")
                     }
                     ).catch(err => {
                         console.log(err)
@@ -29,9 +28,9 @@ const SignUpForm = () => {
                 }
                 }
             >
-                {({ handleChange, handleSubmit, values, errors, touched }) => (
+                {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
-                        <SignUpFields handleChange={handleChange} values={values} errors={errors} touched={touched} />
+                        <SignUpFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
                         <PrimaryBtn title="REGISTER" onPress={handleSubmit} style={styles.LoginBtn} />
                     </View>
                 )}
