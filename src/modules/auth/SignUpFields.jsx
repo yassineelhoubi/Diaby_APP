@@ -52,6 +52,7 @@ const SignUpFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     autoCapitalize="none"
+                    keyboardType='email-address'
                     theme={{ colors: { primary: COLORS.primary } }}
                     value={values.email}
                     label="Email"

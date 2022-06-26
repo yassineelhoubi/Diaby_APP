@@ -9,6 +9,7 @@ const SignInFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                 <TextInput
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
+                    keyboardType='email-address'
                     autoCapitalize="none"
                     value={values.email}
                     label="Email"
