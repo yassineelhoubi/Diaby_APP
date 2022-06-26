@@ -17,7 +17,7 @@ const SignInScreen = ({ navigation }) => {
                     {/* <View style={{ height:"100%", backgroundColor:"green" }}> */}
 
                     <AuthHeader title="Login" subTitle="Enter your login details to access your account" />
-                    <SignInForm />
+                    <SignInForm navigation={navigation} />
                     <AuthFooter text={'Don\'t have an account?'}
                         actionName={'Sign In'}
                         onPress={() => navigation.push('SignUp')} />
