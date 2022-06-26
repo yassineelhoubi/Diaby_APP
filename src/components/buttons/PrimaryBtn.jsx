@@ -1,10 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { COLORS } from '../../constants/theme'
 
-const PrimaryBtn = ({title, onPress, style}) => {
+const PrimaryBtn = ({ title, onPress, style, disabled }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={{...styles.appButtonContainer,...style}}>
-            <Text style={styles.appButtonText}>{title}</Text>
+        <TouchableOpacity onPress={onPress} disabled={disabled} style={{ ...styles.appButtonContainer(disabled), ...style }}>
+            <Text style={styles.appButtonText(disabled)}>{title}</Text>
         </TouchableOpacity>
     )
 }
@@ -12,18 +12,18 @@ const PrimaryBtn = ({title, onPress, style}) => {
 export { PrimaryBtn }
 
 const styles = StyleSheet.create({
-    appButtonContainer: {
-        backgroundColor: COLORS.primary,
+    appButtonContainer: (disabled) => ({
+        backgroundColor: disabled ? "gray" : COLORS.primary,
         padding: 10,
         borderRadius: 15,
         marginTop: 20,
         width: 200,
         alignSelf: 'center'
-    },
-    appButtonText: {
-        color: "#fff",
+    }),
+    appButtonText: (disabled) => ({
+        color: disabled ? "#cccccc" : "white",
         fontSize: 15,
         fontWeight: 'bold',
         textAlign: 'center'
-    }
+    })
 })
