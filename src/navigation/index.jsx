@@ -21,7 +21,6 @@ import {
   SignUpScreen,
   SignInScreen,
   ProfileScreen,
-  AddPost,
   OptionsScreen,
   HomeScreen
 } from "../screens";
@@ -127,11 +126,6 @@ function RootNavigator() {
         options={{
           headerShown: false
         }}
-      />
-      <Stack.Screen
-        name="AddPost"
-        component={AddPost}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="WelcomeNavigator"
