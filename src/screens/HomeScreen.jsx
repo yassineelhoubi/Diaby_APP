@@ -17,6 +17,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button, Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import { FloatingAction } from "react-native-floating-action";
+import { Modal } from "react-native-paper";
+import { DiaryInputModal } from "../modules/userDiary";
 
 
 const wait = (timeout) => {
@@ -25,8 +27,17 @@ const wait = (timeout) => {
 
 export function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
-
-
+  
+  const [modalVisible, setModalVisible] = useState(false);
+  const [userDiary, setUserDiary] = useState();
+  const handleModalVisibility = {
+    setModalVisible,
+    modalVisible
+  }
+  const handleUserDiary = {
+    setUserDiary,
+    userDiary
+  }
 
   const actions = [
     {
@@ -141,9 +152,13 @@ export function HomeScreen() {
         actions={actions}
         color={COLORS.primary}
         onPressItem={name => {
-          console.log(name);
+          setUserDiary({
+            type: name,
+          })
+          setModalVisible(true);
         }}
       />
+      <DiaryInputModal handleModalVisibility={handleModalVisibility} handleUserDiary={handleUserDiary} />
     </View>
 
   );
@@ -153,5 +168,5 @@ const styles = StyleSheet.create({
   map: {
     width: SIZES.width,
     height: SIZES.height,
-  },
+  }
 });
