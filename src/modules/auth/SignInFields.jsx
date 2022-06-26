@@ -31,6 +31,7 @@ const SignInFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     autoCapitalize="none"
+                    secureTextEntry={true}
                     value={values.password}
                     label="Password"
                     placeholder="Enter your password"

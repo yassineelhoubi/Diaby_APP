@@ -1,5 +1,5 @@
 import { StyleSheet, View, Alert, Keyboard } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-native-paper';
 import * as Yup from 'yup';
@@ -11,7 +11,7 @@ import { useLoginMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
 
 const SignInForm = ({ navigation }) => {
-    const [login] = useLoginMutation();
+    const [login, {isLoading}] = useLoginMutation();
     const [showSnackbar, setShowSnackbar] = React.useState(false);
     return (
         <>
@@ -25,7 +25,6 @@ const SignInForm = ({ navigation }) => {
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)
-                        console.log("z")
 
                     }).catch(err => {
                         console.log(err)
@@ -35,7 +34,7 @@ const SignInForm = ({ navigation }) => {
                 {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
                         <SignInFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
-                        <PrimaryBtn title="LOG IN" onPress={handleSubmit} style={styles.LoginBtn} />
+                        <PrimaryBtn title="LOG IN" onPress={handleSubmit} disabled={isLoading} style={styles.LoginBtn} />
                     </View>
                 )}
             </Formik>

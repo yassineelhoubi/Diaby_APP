@@ -6,9 +6,10 @@ import { Formik } from 'formik';
 import { SignUpFields } from './SignUpFields';
 import { useRegisterMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
+import { useEffect } from 'react';
 
 const SignUpForm = ({ navigation }) => {
-    const [register] = useRegisterMutation();
+    const [register, { isLoading }] = useRegisterMutation();
     const [showSnackbar, setShowSnackbar] = useState(false);
     return (
         <>
@@ -31,7 +32,7 @@ const SignUpForm = ({ navigation }) => {
                 {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
                         <SignUpFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
-                        <PrimaryBtn title="REGISTER" onPress={handleSubmit} style={styles.LoginBtn} />
+                        <PrimaryBtn title="REGISTER" disabled={isLoading} onPress={handleSubmit} style={styles.LoginBtn} />
                     </View>
                 )}
             </Formik>
