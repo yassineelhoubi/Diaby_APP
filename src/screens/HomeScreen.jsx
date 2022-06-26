@@ -23,18 +23,33 @@ const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
-export  function HomeScreen() {
+export function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
 
 
   const actions = [
     {
-      text: "Create Post",
-      icon: require("./../../assets/png/heart.png"),
-      name: "NewPost",
-      position: 1
+      text: "Sugar Level",
+      icon: require("./../../assets/png/diabetes.png"),
+      name: "sugarLevel",
+      position: 1,
+      color: COLORS.primaryText,
     },
+    {
+      text: "Insulin",
+      icon: require("./../../assets/png/injection.png"),
+      name: "insulin",
+      position: 2,
+      color: COLORS.primaryText,
+    },
+    {
+      text: "Pill",
+      icon: require("./../../assets/png/pill.png"),
+      name: "pill",
+      position: 3,
+      color: COLORS.primaryText,
+    }
   ]
 
   const navigation = useNavigation();
@@ -44,7 +59,7 @@ export  function HomeScreen() {
   }, []);
 
   useEffect(() => {
-console.log("refreshing");
+    console.log("refreshing");
   }, [refreshing]);
 
   return (
@@ -109,10 +124,10 @@ console.log("refreshing");
 
 
             <View style={tw`p-2 w-full `} key={index}>
-              
+
               <View style={tw`flex-row justify-between h-15 rounded-5 bg-sky-100`}>
                 <Text style={tw`text-base font-bold`}>test {item}</Text>
-                
+
               </View>
             </View>
           ))}
@@ -126,7 +141,7 @@ console.log("refreshing");
         actions={actions}
         color={COLORS.primary}
         onPressItem={name => {
-          navigation.navigate("AddPost");
+          console.log(name);
         }}
       />
     </View>
