@@ -7,7 +7,7 @@ import { SignUpFields } from './SignUpFields';
 import { useRegisterMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
 
-const SignUpForm = () => {
+const SignUpForm = ({ navigation }) => {
     const [register] = useRegisterMutation();
     const [showSnackbar, setShowSnackbar] = useState(false);
     return (

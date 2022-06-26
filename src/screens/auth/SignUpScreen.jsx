@@ -11,7 +11,7 @@ const SignUpScreen = ({ navigation }) => {
             <SafeAreaView style={styles.container}>
                 <KeyboardAwareScrollView  >
                     <AuthHeader title="Register" subTitle="Enter your credentials to register" />
-                    <SignUpForm />
+                    <SignUpForm navigation={navigation} />
                 </KeyboardAwareScrollView >
             </SafeAreaView>
         </>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        marginTop: StatusBar.currentHeight,
+        paddingTop:40,
         padding: 25
     },
 })
