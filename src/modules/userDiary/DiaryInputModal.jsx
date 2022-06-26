@@ -14,11 +14,10 @@ const DiaryInputModal = ({ handleModalVisibility, handleUserDiary }) => {
     return (
         <Modal visible={modalVisible} onDismiss={setModalVisible} contentContainerStyle={styles.modalContainer}>
             <View style={styles.modalContent}>
-                <Text style={{color:COLORS.primaryText, fontWeight:"bold", fontSize:15}}>{label[userDiary.type]}</Text>
+                <Text style={{ color: COLORS.primaryText, fontWeight: "bold", fontSize: 15 }}>{label[userDiary.type]}</Text>
                 <TextInput
                     label="Value"
                     mode='outlined'
-                    onChange={(e) => {setUserDiary({...userDiary, value:e.nativeEvent.text})}}
                     value={userDiary.value}
                     keyboardType='numeric'
                     underlineColor={COLORS.primary}
@@ -26,16 +25,14 @@ const DiaryInputModal = ({ handleModalVisibility, handleUserDiary }) => {
                     activeUnderlineColor={COLORS.primary}
                     outlineColor={COLORS.secondary}
                     activeOutlineColor={COLORS.primary}
-                // onChangeText={text => setText(text)}
+                    onChangeText={text => setUserDiary({ ...userDiary, value: text })}
                 />
                 <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-
                     <Button style={{ width: 100, height: 40, alignContent: "flex-end" }} color={COLORS.primary} mode="outlined" onPress={() => console.log(userDiary)}>
                         Done
                     </Button>
                 </View>
             </View>
-
         </Modal>
     )
 }
