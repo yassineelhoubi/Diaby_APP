@@ -7,8 +7,11 @@ import { SignUpFields } from './SignUpFields';
 import { useRegisterMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../app/features/user/userSlice';
 
 const SignUpForm = ({ navigation }) => {
+    let dispatch = useDispatch()
     const [register, { isLoading }] = useRegisterMutation();
     const [showSnackbar, setShowSnackbar] = useState(false);
     return (
@@ -19,6 +22,7 @@ const SignUpForm = ({ navigation }) => {
                 onSubmit={(values, actions) => {
                     register(values).then(res => {
                         if (!res.data.error) {
+                            dispatch(setToken({ token: res.data.token }))
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)
