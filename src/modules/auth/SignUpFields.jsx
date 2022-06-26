@@ -51,9 +51,9 @@ const SignUpFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                 <TextInput
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
+                    autoCapitalize="none"
                     theme={{ colors: { primary: COLORS.primary } }}
                     value={values.email}
-
                     label="Email"
                     placeholder="Enter your email"
                     mode="outlined"
@@ -72,6 +72,7 @@ const SignUpFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                 <TextInput
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
+                    autoCapitalize="none"
                     value={values.password}
                     secureTextEntry={true}
                     label="Password"

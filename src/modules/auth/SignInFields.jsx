@@ -9,6 +9,7 @@ const SignInFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                 <TextInput
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
+                    autoCapitalize="none"
                     value={values.email}
                     label="Email"
                     placeholder="Enter your email"
@@ -28,6 +29,7 @@ const SignInFields = ({ handleChange, handleBlur, values, errors, touched }) => 
                 <TextInput
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
+                    autoCapitalize="none"
                     value={values.password}
                     label="Password"
                     placeholder="Enter your password"
