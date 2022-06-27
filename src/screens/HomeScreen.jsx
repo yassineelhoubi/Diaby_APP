@@ -34,7 +34,7 @@ export function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    console.log("aze");
+    console.log("refreshing");
     refetch();
   }, [refreshing]);
 
