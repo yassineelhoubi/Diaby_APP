@@ -1,15 +1,17 @@
-import {api} from '../../api';
+import { api } from '../../api';
 
-const apiWithTags = api.enhanceEndpoints({addTagTypes: ['UserDiary']})
+const apiWithTags = api.enhanceEndpoints({ addTagTypes: ['UserDiary'] })
 
 const userDiaryApi = apiWithTags.injectEndpoints({
-    endpoints: (builder) => ({ 
+    endpoints: (builder) => ({
         createUserDiary: builder.mutation({
             query: (body) => ({
-                url: '/userDiary',
+                url: '/user-diary',
                 method: 'POST',
                 body,
             })
         }),
     })
 });
+
+export const { useCreateUserDiaryMutation } = userDiaryApi;

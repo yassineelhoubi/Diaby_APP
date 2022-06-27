@@ -29,7 +29,7 @@ export function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [userDiary, setUserDiary] = useState();
+  const [userDiary, setUserDiary] = useState({ type: "", value: "" });
   const handleModalVisibility = {
     setModalVisible,
     modalVisible
@@ -158,7 +158,7 @@ export function HomeScreen() {
           setModalVisible(true);
         }}
       />
-      {modalVisible && <DiaryInputModal handleModalVisibility={handleModalVisibility} handleUserDiary={handleUserDiary} />}
+      <DiaryInputModal handleModalVisibility={handleModalVisibility} handleUserDiary={handleUserDiary} />
     </View>
 
   );
