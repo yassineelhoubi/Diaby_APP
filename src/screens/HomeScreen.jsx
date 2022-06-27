@@ -34,11 +34,12 @@ export function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    console.log("refreshing");
+    console.log("aze");
+    refetch();
   }, [refreshing]);
 
   const { user } = useSelector(state => state.user.user);
-  const { data: historyData, isLoading } = useGetAllByQueryStringQuery(`userId=${user._id}`);
+  const { data: historyData, isLoading, refetch } = useGetAllByQueryStringQuery(`userId=${user._id}`);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [userDiary, setUserDiary] = useState({ type: "", value: "" });
