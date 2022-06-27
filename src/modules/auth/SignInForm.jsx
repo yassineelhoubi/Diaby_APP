@@ -1,5 +1,5 @@
 import { StyleSheet, View, Alert, Keyboard } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-native-paper';
 import * as Yup from 'yup';
@@ -9,9 +9,12 @@ import { PrimaryBtn } from '../../components';
 import tw from 'twrnc'
 import { useLoginMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
-
+import { useDispatch, useSelector } from "react-redux"
+import { setToken } from '../../app/features/user/userSlice'
+import { setUser } from '../../app/features/user/userSlice'
 const SignInForm = ({ navigation }) => {
-    const [login] = useLoginMutation();
+    let dispatch = useDispatch()
+    const [login, { isLoading }] = useLoginMutation();
     const [showSnackbar, setShowSnackbar] = React.useState(false);
     return (
         <>
@@ -22,22 +25,21 @@ const SignInForm = ({ navigation }) => {
                 onSubmit={values => {
                     login(values).then(res => {
                         if (!res.data.error) {
-                            return navigation.push('Root')  
+                            dispatch(setToken({ token: res.data.token }))
+                            dispatch(setUser({ user: res.data.user }))
+                            return navigation.push('Root')
                         }
                         setShowSnackbar(true)
-                        console.log("z")
 
                     }).catch(err => {
                         console.log(err)
                     });
-                    // console.log(values)
-
                 }
                 }>
-                {({ handleChange, handleSubmit, values, errors, touched }) => (
+                {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
-                        <SignInFields handleChange={handleChange} values={values} errors={errors} touched={touched} />
-                        <PrimaryBtn title="LOG IN" onPress={handleSubmit} style={styles.LoginBtn} />
+                        <SignInFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
+                        <PrimaryBtn title="LOG IN" onPress={handleSubmit} disabled={isLoading} style={styles.LoginBtn} />
                     </View>
                 )}
             </Formik>

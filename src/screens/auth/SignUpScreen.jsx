@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, Button, SafeAreaView, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native'
 import React from 'react'
 import { BackBtn } from '../../components'
 import { AuthHeader, SignUpForm } from '../../modules/auth'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { StatusBar } from "expo-status-bar";
 
 const SignUpScreen = ({ navigation }) => {
     return (
@@ -11,9 +12,10 @@ const SignUpScreen = ({ navigation }) => {
             <SafeAreaView style={styles.container}>
                 <KeyboardAwareScrollView  >
                     <AuthHeader title="Register" subTitle="Enter your credentials to register" />
-                    <SignUpForm />
+                    <SignUpForm navigation={navigation} />
                 </KeyboardAwareScrollView >
             </SafeAreaView>
+            <StatusBar style="dark" />
         </>
     )
 }
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        marginTop: StatusBar.currentHeight,
+        paddingTop:40,
         padding: 25
     },
 })

@@ -6,9 +6,14 @@ import { Formik } from 'formik';
 import { SignUpFields } from './SignUpFields';
 import { useRegisterMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../app/features/user/userSlice';
+import { setUser } from '../../app/features/user/userSlice'
 
-const SignUpForm = () => {
-    const [register] = useRegisterMutation();
+const SignUpForm = ({ navigation }) => {
+    let dispatch = useDispatch()
+    const [register, { isLoading }] = useRegisterMutation();
     const [showSnackbar, setShowSnackbar] = useState(false);
     return (
         <>
@@ -18,10 +23,11 @@ const SignUpForm = () => {
                 onSubmit={(values, actions) => {
                     register(values).then(res => {
                         if (!res.data.error) {
+                            dispatch(setToken({ token: res.data.token }))
+                            dispatch(setUser({ user: res.data.user }))
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)
-                        console.log("z")
                     }
                     ).catch(err => {
                         console.log(err)
@@ -29,10 +35,10 @@ const SignUpForm = () => {
                 }
                 }
             >
-                {({ handleChange, handleSubmit, values, errors, touched }) => (
+                {({ handleChange, handleSubmit, handleBlur, values, errors, touched }) => (
                     <View>
-                        <SignUpFields handleChange={handleChange} values={values} errors={errors} touched={touched} />
-                        <PrimaryBtn title="REGISTER" onPress={handleSubmit} style={styles.LoginBtn} />
+                        <SignUpFields handleChange={handleChange} handleBlur={handleBlur} values={values} errors={errors} touched={touched} />
+                        <PrimaryBtn title="REGISTER" disabled={isLoading} onPress={handleSubmit} style={styles.LoginBtn} />
                     </View>
                 )}
             </Formik>
