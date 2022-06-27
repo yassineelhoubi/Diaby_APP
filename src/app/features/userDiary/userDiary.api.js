@@ -9,9 +9,18 @@ const userDiaryApi = apiWithTags.injectEndpoints({
                 url: '/user-diary',
                 method: 'POST',
                 body,
-            })
+            }),
+            invalidatesTags: [{ type: 'UserDiary', id: 'List' }]
         }),
+        getAllByQueryString: builder.query({
+            query: (query) => ({
+                url: `/user-diary/getAllByType/query?${query}`,
+                method: 'GET',
+            }),
+            providesTags: [{ type: 'UserDiary', name: 'LIST' }]
+
+        })
     })
 });
 
-export const { useCreateUserDiaryMutation } = userDiaryApi;
+export const { useCreateUserDiaryMutation, useGetAllByQueryStringQuery } = userDiaryApi;
