@@ -119,7 +119,7 @@ function BottomTabNavigator() {
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="WelcomeNavigator">
+    <Stack.Navigator initialRouteName="Root">
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}

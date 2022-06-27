@@ -17,8 +17,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button, Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import { FloatingAction } from "react-native-floating-action";
-import { Modal } from "react-native-paper";
+import { Divider, Modal } from "react-native-paper";
 import { DiaryInputModal } from "../modules/userDiary";
+import { List } from 'react-native-paper';
 
 
 const wait = (timeout) => {
@@ -127,23 +128,22 @@ export function HomeScreen() {
             <View style={tw`p-1 w-[40px] rounded-full bg-gray-600 `}></View>
           </View>
 
-          <View style={tw`p-3  pt-4 w-full `}>
-            <Text style={tw`text-3xl font-bold pl-3`}>History</Text>
+          <View style={tw`p-3 pt-4 w-full `}>
+            <Text style={{color:COLORS.primary , fontSize:30, fontWeight:"bold", letterSpacing:3}}>History</Text>
           </View>
 
           {[1, 1, 1, 1].map((item, index) => (
 
-
-            <View style={tw`p-2 w-full `} key={index}>
-
-              <View style={tw`flex-row justify-between h-15 rounded-5 bg-sky-100`}>
-                <Text style={tw`text-base font-bold`}>test {item}</Text>
-
-              </View>
-            </View>
+            <>
+              <List.Item
+                title={`Type: ${item.type}`}
+                description={`Value: ${item.value}`}
+                key={index}
+                left={() => <List.Icon color={COLORS.primaryText} icon="folder" />}
+              />
+              <Divider />
+            </>
           ))}
-
-
         </View>
         <StatusBar style="dark" />
       </ScrollView>
