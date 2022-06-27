@@ -22,7 +22,6 @@ import { DiaryInputModal } from "../modules/userDiary";
 import { List } from 'react-native-paper';
 import { useGetAllByQueryStringQuery } from "../app/features/userDiary/userDiary.api";
 
-
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
@@ -38,11 +37,9 @@ export function HomeScreen() {
     console.log("refreshing");
   }, [refreshing]);
 
-  const { data: historyData } = useGetAllByQueryStringQuery("userId=62b874f5f56594113ead5555");
+  const { user } = useSelector(state => state.user.user);
+  const { data: historyData , isLoading } = useGetAllByQueryStringQuery(`userId=${user._id}`);
 
-  useEffect(() => {
-    console.log("historyData", historyData);
-  }, [historyData]);
   const [modalVisible, setModalVisible] = useState(false);
   const [userDiary, setUserDiary] = useState({ type: "", value: "" });
   const handleModalVisibility = {

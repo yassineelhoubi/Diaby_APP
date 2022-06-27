@@ -9,6 +9,7 @@ import { Snackbar } from 'react-native-paper';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../app/features/user/userSlice';
+import { setUser } from '../../app/features/user/userSlice'
 
 const SignUpForm = ({ navigation }) => {
     let dispatch = useDispatch()
@@ -23,6 +24,7 @@ const SignUpForm = ({ navigation }) => {
                     register(values).then(res => {
                         if (!res.data.error) {
                             dispatch(setToken({ token: res.data.token }))
+                            dispatch(setUser({ user: res.data.user }))
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)
