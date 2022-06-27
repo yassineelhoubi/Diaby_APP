@@ -38,7 +38,7 @@ export function HomeScreen() {
   }, [refreshing]);
 
   const { user } = useSelector(state => state.user.user);
-  const { data: historyData , isLoading } = useGetAllByQueryStringQuery(`userId=${user._id}`);
+  const { data: historyData, isLoading } = useGetAllByQueryStringQuery(`userId=${user._id}`);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [userDiary, setUserDiary] = useState({ type: "", value: "" });
@@ -125,7 +125,7 @@ export function HomeScreen() {
           />
         </View>
 
-        <View style={tw`-mt-6 bg-gray-200 rounded-t-5 w-full `}>
+        <View style={tw`-mt-6 bg-gray-200 rounded-t-5 w-full min-h-100 `}>
           <View style={tw`w-full  p-2 items-center`}>
             <View style={tw`p-1 w-[40px] rounded-full bg-gray-600 `}></View>
           </View>
@@ -136,15 +136,15 @@ export function HomeScreen() {
 
           {historyData && historyData.map((item, index) => (
 
-            <>
+            <View key={index}>
               <List.Item
                 title={`Type: ${item.type}`}
                 description={`Value: ${item.value}`}
-                key={index}
-                left={() => <List.Icon color={COLORS.primaryText} icon="folder" />}
+                key={item._id}
+                left={() => <List.Icon key={index} color={COLORS.primaryText} icon="folder" />}
               />
               <Divider />
-            </>
+            </View>
           ))}
         </View>
         <StatusBar style="dark" />
