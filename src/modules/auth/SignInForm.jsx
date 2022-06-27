@@ -11,6 +11,7 @@ import { useLoginMutation } from '../../app/features/user/user.api';
 import { Snackbar } from 'react-native-paper';
 import { useDispatch, useSelector } from "react-redux"
 import { setToken } from '../../app/features/user/userSlice'
+import { setUser } from '../../app/features/user/userSlice'
 const SignInForm = ({ navigation }) => {
     let dispatch = useDispatch()
     const [login, { isLoading }] = useLoginMutation();
@@ -25,6 +26,7 @@ const SignInForm = ({ navigation }) => {
                     login(values).then(res => {
                         if (!res.data.error) {
                             dispatch(setToken({ token: res.data.token }))
+                            dispatch(setUser({ user: res.data.user }))
                             return navigation.push('Root')
                         }
                         setShowSnackbar(true)

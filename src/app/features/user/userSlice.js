@@ -13,6 +13,9 @@ export const userSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    }
     // login: (state, action) => {
     //   state.user = action.payload;
     // },
@@ -25,7 +28,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout, checkDarkMode, setToken } = userSlice.actions;
+export const { login, logout, checkDarkMode, setToken, setUser } = userSlice.actions;
 
 export const selectUser = (state) => state.user.user;
 
