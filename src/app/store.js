@@ -6,6 +6,7 @@ import { api } from './api';
 const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,
