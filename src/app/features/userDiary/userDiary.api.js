@@ -10,14 +10,14 @@ const userDiaryApi = apiWithTags.injectEndpoints({
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: [{ type: 'UserDiary', id: 'List' }]
+            invalidatesTags: [{ type: 'UserDiary', id: 'LIST' }]
         }),
         getAllByQueryString: builder.query({
             query: (query) => ({
                 url: `/user-diary/getAllByType/query?${query}`,
                 method: 'GET',
             }),
-            providesTags: [{ type: 'UserDiary', name: 'LIST' }]
+            providesTags: [{ type: 'UserDiary', id: 'LIST' }]
 
         })
     })
